@@ -76,7 +76,7 @@ var appointment = mongoose.model('appointment', appointmentSchema);
 router.get('/appointment-all', function (req, res, next) {
     mongodb.MongoClient.connect('mongodb://bizbuzz:123456@ds025399.mlab.com:25399/bizbuzz', function (err, db) {
         if (err) res.send(err);
-        db.collection('shop').find().toArray(function (err, results) {
+        db.collection('appointment').find().toArray(function (err, results) {
             if (err) res.send(err);
             res.json(results);
             db.close();
