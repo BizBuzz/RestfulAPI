@@ -25,7 +25,7 @@ router.get('/appointment-all', function (req, res, next) {
 router.get('/appointment-username/:username', function (req, res, next) {
     mongodb.MongoClient.connect('mongodb://bizbuzz:123456@ds025399.mlab.com:25399/bizbuzz', function (err, db) {
         if (err) res.send(err);
-        db.collection('appointment').find({"username": req.params.username}).toArray(function (err, results) {
+        db.collection('appointment').find({"Username": req.params.username}).toArray(function (err, results) {
             if (err) res.send(err);
             res.json(results);
             db.close();
@@ -36,7 +36,7 @@ router.get('/appointment-username/:username', function (req, res, next) {
 router.get('/appointment-barbername/:barbername', function (req, res, next) {
     mongodb.MongoClient.connect('mongodb://bizbuzz:123456@ds025399.mlab.com:25399/bizbuzz', function (err, db) {
         if (err) res.send(err);
-        db.collection('appointment').find({"barbername": req.params.barbername}).toArray(function (err, results) {
+        db.collection('appointment').find({"Barbername": req.params.barbername}).toArray(function (err, results) {
             if (err) res.send(err);
             res.json(results);
             db.close();
@@ -64,6 +64,15 @@ router.get('/user-all', function (req, res, next) {
             });
     });
 });
+
+router.get('/user-all123', function(req, res, next) {
+        user.find(function(err,results){
+            if(err) return console.err(err);
+            console.dir(results);
+        });
+});
+
+
 
 router.get('/user/:name', function (req, res, next) {
     mongodb.MongoClient.connect('mongodb://bizbuzz:123456@ds025399.mlab.com:25399/bizbuzz', function (err, db) {
@@ -111,7 +120,7 @@ router.get('/test', function (req, res) {
     res.json({
         "test": "success"
     });
-})
+});
 
 router.post('/user', function (req, res, next) {
     user.create(req.body, function (err, data) {
@@ -136,6 +145,6 @@ router.get('/user/:username/:password', function (req, res, next) {
         })
     })
 
-})
+});
 
 module.exports = router;
