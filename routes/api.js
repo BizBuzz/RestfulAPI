@@ -83,6 +83,13 @@ router.get('/user/:name', function (req, res, next) {
     });
 });
 
+router.post('/user', function (req, res, next) {
+    user.create(req.body, function (err, data) {
+        if (err) return next(err);
+        res.json(data);
+    })
+});
+
 var shopSchema = new mongoose.Schema({
     username: String,
     name: String,
@@ -120,12 +127,6 @@ router.get('/test', function (req, res) {
     });
 });
 
-router.post('/user', function (req, res, next) {
-    user.create(req.body, function (err, data) {
-        if (err) return next(err);
-        res.json(data);
-    })
-});
 
 router.get('/user/:username/:password', function (req, res, next) {
     user.find({
