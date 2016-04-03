@@ -40,6 +40,7 @@ router.get('/user/:name', function (req, res, next) {
 });
 
 var shopSchema = new mongoose.Schema({
+    username: String,
     name: String,
     Address: String,
     Badge: [{BName: String}]
