@@ -84,7 +84,7 @@ router.get('/appointment-all', function (req, res, next) {
     });
 });
 
-router.get('/appointment/username/:username', function (req, res, next) {
+router.get('/appointment-username/:username', function (req, res, next) {
     mongodb.MongoClient.connect('mongodb://bizbuzz:123456@ds025399.mlab.com:25399/bizbuzz', function (err, db) {
         if (err) res.send(err);
         db.collection('appointment').find({"username": req.params.username}).toArray(function (err, results) {
@@ -95,7 +95,7 @@ router.get('/appointment/username/:username', function (req, res, next) {
     });
 });
 
-router.get('/appointment/barbername/:barbername', function (req, res, next) {
+router.get('/appointment-barbername/:barbername', function (req, res, next) {
     mongodb.MongoClient.connect('mongodb://bizbuzz:123456@ds025399.mlab.com:25399/bizbuzz', function (err, db) {
         if (err) res.send(err);
         db.collection('appointment').find({"barbername": req.params.barbername}).toArray(function (err, results) {
