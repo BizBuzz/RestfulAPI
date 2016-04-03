@@ -7,12 +7,7 @@ var userSchema = new mongoose.Schema({
     name: String,
     Age: Number,
     LoyaltyPoints: Number,
-    FavoriteBarber: String,
-    Appointment: [
-        {
-            BarberName: String,
-            Time: Date
-        }]
+    FavoriteBarber: String
 })
 
 var user = mongoose.model('user', userSchema);
@@ -63,6 +58,47 @@ router.get('/shop/:username', function (req, res, next) {
     mongodb.MongoClient.connect('mongodb://bizbuzz:123456@ds025399.mlab.com:25399/bizbuzz', function (err, db) {
         if (err) res.send(err);
         db.collection('shop').find({"username": req.params.username}).toArray(function (err, results) {
+            if (err) res.send(err);
+            res.json(results);
+            db.close();
+        });
+    });
+});
+
+var appointmentSchema = new mongoose.Schema({
+    Username: String,
+    BarberName: String,
+    Time: Date
+});
+
+var appointment = mongoose.model('appointment', appointmentSchema);
+
+router.get('/appointment-all', function (req, res, next) {
+    mongodb.MongoClient.connect('mongodb://bizbuzz:123456@ds025399.mlab.com:25399/bizbuzz', function (err, db) {
+        if (err) res.send(err);
+        db.collection('shop').find().toArray(function (err, results) {
+            if (err) res.send(err);
+            res.json(results);
+            db.close();
+        });
+    });
+});
+
+router.get('/appointment/username/:username', function (req, res, next) {
+    mongodb.MongoClient.connect('mongodb://bizbuzz:123456@ds025399.mlab.com:25399/bizbuzz', function (err, db) {
+        if (err) res.send(err);
+        db.collection('appointment').find({"username": req.params.username}).toArray(function (err, results) {
+            if (err) res.send(err);
+            res.json(results);
+            db.close();
+        });
+    });
+});
+
+router.get('/appointment/barbername/:barbername', function (req, res, next) {
+    mongodb.MongoClient.connect('mongodb://bizbuzz:123456@ds025399.mlab.com:25399/bizbuzz', function (err, db) {
+        if (err) res.send(err);
+        db.collection('appointment').find({"barbername": req.params.barbername}).toArray(function (err, results) {
             if (err) res.send(err);
             res.json(results);
             db.close();
