@@ -116,7 +116,7 @@ router.get('/shop/:username', function (req, res, next) {
 
 router.get('/test', function (req, res) {
     res.json({
-        "test": "success001"
+        "test": "success002"
     });
 });
 
