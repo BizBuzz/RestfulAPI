@@ -65,14 +65,12 @@ router.get('/user-all', function (req, res, next) {
     });
 });
 
-router.get('/user-all123', function(req, res, next) {
-        user.find(function(err,results){
-            if(err) return console.err(err);
-            console.dir(results);
-        });
+router.get('/userall', function (req, res, next) {
+    user.find(function (err, data) {
+        if (err) return next(err);
+        res.json(data);
+    });
 });
-
-
 
 router.get('/user/:name', function (req, res, next) {
     mongodb.MongoClient.connect('mongodb://bizbuzz:123456@ds025399.mlab.com:25399/bizbuzz', function (err, db) {
