@@ -62,7 +62,7 @@ router.get('/shop-all', function (req, res, next) {
 router.get('/shop/:name', function (req, res, next) {
     mongodb.MongoClient.connect('mongodb://bizbuzz:123456@ds025399.mlab.com:25399/bizbuzz', function (err, db) {
         if (err) res.send(err);
-        db.collection("shop").find({"name": req.params.name}).toArray(function (err, results) {
+        db.collection("shop").find({"username": req.params.name}).toArray(function (err, results) {
             if (err) res.send(err);
             res.json(results);
             db.close();
