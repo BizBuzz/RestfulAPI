@@ -3,14 +3,31 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var mongodb = require('mongodb');
 
-var appointmentSchema = new mongoose.Schema({
-    Username: String,
-    BarberName: String,
-    Time: Date
+var Appointment = require('../models/Appointment.js');
+
+router.get('/appointment-all', function (req, res, next) {
+    Appointment.find(function (err, data) {
+        if (err) return next(err);
+        res.json(data);
+    });
 });
 
-var appointment = mongoose.model('appointment', appointmentSchema);
+router.get('/appointment-username/:username', function (req, res) {
+    Appointment.find({"Username": req.params.username}, function(err, user) {
+        if (err)
+            res.send(err);
+        res.json(user);
+    });
+});
 
+router.get('/appointment-barbername/:barbername', function (req, res) {
+    Appointment.find({"Barbername": req.params.barbername}, function(err, user) {
+        if (err)
+            res.send(err);
+        res.json(user);
+    });
+});
+/*
 router.get('/appointment-all', function (req, res, next) {
     mongodb.MongoClient.connect('mongodb://bizbuzz:123456@ds025399.mlab.com:25399/bizbuzz', function (err, db) {
         if (err) res.send(err);
@@ -21,7 +38,8 @@ router.get('/appointment-all', function (req, res, next) {
         });
     });
 });
-
+*/
+/*
 router.get('/appointment-username/:username', function (req, res, next) {
     mongodb.MongoClient.connect('mongodb://bizbuzz:123456@ds025399.mlab.com:25399/bizbuzz', function (err, db) {
         if (err) res.send(err);
@@ -32,7 +50,8 @@ router.get('/appointment-username/:username', function (req, res, next) {
         });
     });
 });
-
+*/
+/*
 router.get('/appointment-barbername/:barbername', function (req, res, next) {
     mongodb.MongoClient.connect('mongodb://bizbuzz:123456@ds025399.mlab.com:25399/bizbuzz', function (err, db) {
         if (err) res.send(err);
@@ -43,6 +62,7 @@ router.get('/appointment-barbername/:barbername', function (req, res, next) {
         });
     });
 });
+*/
 
 
 var User = require('../models/User.js');
@@ -109,15 +129,15 @@ router.post('/newuser', function(req, res, next) {
     });
 });
 
-var shopSchema = new mongoose.Schema({
-    username: String,
-    name: String,
-    Address: String,
-    Badge: [{BName: String}]
-})
+var Shop = require('../models/Shop.js');
 
-var shop = mongoose.model('shop', shopSchema);
-
+router.get('/shop-all', function (req, res) {
+    Shop.find(function (err, data) {
+        if (err) return next(err);
+        res.json(data);
+    });
+});
+/*
 router.get('/shop-all', function (req, res, next) {
     mongodb.MongoClient.connect('mongodb://bizbuzz:123456@ds025399.mlab.com:25399/bizbuzz', function (err, db) {
         if (err) res.send(err);
@@ -128,7 +148,9 @@ router.get('/shop-all', function (req, res, next) {
         });
     });
 });
+*/
 
+/*
 router.get('/shop/:username', function (req, res, next) {
     mongodb.MongoClient.connect('mongodb://bizbuzz:123456@ds025399.mlab.com:25399/bizbuzz', function (err, db) {
         if (err) res.send(err);
@@ -139,6 +161,15 @@ router.get('/shop/:username', function (req, res, next) {
         });
     });
 });
+*/
+
+router.get('/shop/:username', function (req, res) {
+    Shop.find({"username": req.params.username}, function(err, user) {
+        if (err)
+            res.send(err);
+        res.json(user);
+    });
+});
 
 router.get('/test', function (req, res) {
     res.json({
@@ -146,7 +177,7 @@ router.get('/test', function (req, res) {
     });
 });
 
-
+/*
 router.get('/user/:username/:password', function (req, res, next) {
     user.find({
         username: req.params.username
@@ -164,5 +195,6 @@ router.get('/user/:username/:password', function (req, res, next) {
     })
 
 });
+*/
 
 module.exports = router;
