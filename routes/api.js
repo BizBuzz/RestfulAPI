@@ -79,7 +79,7 @@ router.get('/user/:name', function (req, res, next) {
 router.post('/user', function (req, res) {
     var user = new User();
     user.name = req.body.name;
-    user.age = req.body.age;
+    user.Age = req.body.Age;
     user.LoyaltyPoints = req.body.LoyaltyPoints;
     user.FavoriteBarber = req.body.FavoriteBarber;
     user.save(function(err) {
