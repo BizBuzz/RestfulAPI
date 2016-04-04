@@ -148,7 +148,39 @@ http://bizzbuz-linxin-li.herokuapp.com/api/
 ```
 
 ## Insert new shopInfo
+
+|Name|      Type             |
+|-----------|-------------------|
+| username|        String| 
+| name|         String  |  
+| Address|    String|      
+| Badge|   [String] | 
+
 - Example: post http://bizzbuz-linxin-li.herokuapp.com/api/newshop
+- request body 
+```
+  {
+    "username": "CuttingDen",
+    "name": "Cutting Den of Brooklyn Heights",
+    "Address": "51 Clark St New York, NY 11201",
+    "Badge": [
+      "Best Barbershop in Mar."
+    ]
+  }
+```
+- response body
+```
+{
+  "__v": 0,
+  "username": "CuttingDen",
+  "name": "Cutting Den of Brooklyn Heights",
+  "Address": "51 Clark St New York, NY 11201",
+  "_id": "5701d310940c3511003924e2",
+  "Badge": [
+    "Best Barbershop in Mar."
+  ]
+}
+```
 
 ## List all appointmentInfo
 - Example: get http://bizzbuz-linxin-li.herokuapp.com/api/appointment-all
