@@ -83,10 +83,16 @@ router.get('/user/:name', function (req, res, next) {
     });
 });
 
-router.post('/user', function (req, res, next) {
-    user.insert(req.body, function (err, data) {
-        if (err) return next(err);
-        res.json(data);
+router.post('/user', function (req, res) {
+    var user = new user();
+    user.name = req.body.name;
+    user.age = req.body.age;
+    user.LoyaltyPoints = req.body.LoyaltyPoints;
+    user.FavoriteBarber = req.body.FavoriteBarber;
+    user.save(function(err) {
+        if (err)
+            res.send(err);
+        res.json({message : 'User created!'});
     });
 });
 
