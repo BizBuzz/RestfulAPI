@@ -84,14 +84,9 @@ router.get('/user/:name', function (req, res, next) {
 });
 
 router.post('/user', function (req, res, next) {
-    mongodb.MongoClient.connect('mongodb://bizbuzz:123456@ds025399.mlab.com:25399/bizbuzz', function (err, db) {
-        if (err) res.send(err);
-        db.collection('user').insert(req.body, function (err, results) {
-            if (err) res.send(err);
-            //res.json(results);
-            res.send(result);
-            db.close();
-        });
+    user.insert(req.body, function (err, data) {
+        if (err) return next(err);
+        res.json(data);
     });
 });
 
