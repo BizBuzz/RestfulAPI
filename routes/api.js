@@ -45,14 +45,7 @@ router.get('/appointment-barbername/:barbername', function (req, res, next) {
 });
 
 
-var userSchema = new mongoose.Schema({
-    name: String,
-    Age: Number,
-    LoyaltyPoints: Number,
-    FavoriteBarber: String
-})
-
-var user = mongoose.model('user', userSchema);
+var User = require('../models/User.js');
 
 router.get('/user-all', function (req, res, next) {
         mongodb.MongoClient.connect('mongodb://bizbuzz:123456@ds025399.mlab.com:25399/bizbuzz', function (err, db) {
@@ -66,7 +59,7 @@ router.get('/user-all', function (req, res, next) {
 });
 
 router.get('/userall', function (req, res, next) {
-    user.find(function (err, data) {
+    User.find(function (err, data) {
         if (err) return next(err);
         res.json(data);
     });
@@ -84,7 +77,7 @@ router.get('/user/:name', function (req, res, next) {
 });
 
 router.post('/user', function (req, res) {
-    var user = new user();
+    var user = new User();
     user.name = req.body.name;
     user.age = req.body.age;
     user.LoyaltyPoints = req.body.LoyaltyPoints;
@@ -92,7 +85,14 @@ router.post('/user', function (req, res) {
     user.save(function(err) {
         if (err)
             res.send(err);
-        res.json({message : 'User created!'});
+        res.json({message : 'user created!'});
+    });
+});
+
+router.post('/newuser', function(req, res, next) {
+    User.create(req.body, function (err, post) {
+        if (err) return next(err);
+        res.json(post);
     });
 });
 
