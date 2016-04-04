@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 
 var AppointmentSchema = new mongoose.Schema({
     Username: String,
-    BarberName: String,
+    Barbername: String,
     Time: Date
 });
 
