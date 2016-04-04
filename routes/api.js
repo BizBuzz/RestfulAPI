@@ -27,59 +27,15 @@ router.get('/appointment-barbername/:barbername', function (req, res) {
         res.json(user);
     });
 });
-/*
-router.get('/appointment-all', function (req, res, next) {
-    mongodb.MongoClient.connect('mongodb://bizbuzz:123456@ds025399.mlab.com:25399/bizbuzz', function (err, db) {
-        if (err) res.send(err);
-        db.collection('appointment').find().toArray(function (err, results) {
-            if (err) res.send(err);
-            res.json(results);
-            db.close();
-        });
-    });
-});
-*/
-/*
-router.get('/appointment-username/:username', function (req, res, next) {
-    mongodb.MongoClient.connect('mongodb://bizbuzz:123456@ds025399.mlab.com:25399/bizbuzz', function (err, db) {
-        if (err) res.send(err);
-        db.collection('appointment').find({"Username": req.params.username}).toArray(function (err, results) {
-            if (err) res.send(err);
-            res.json(results);
-            db.close();
-        });
-    });
-});
-*/
-/*
-router.get('/appointment-barbername/:barbername', function (req, res, next) {
-    mongodb.MongoClient.connect('mongodb://bizbuzz:123456@ds025399.mlab.com:25399/bizbuzz', function (err, db) {
-        if (err) res.send(err);
-        db.collection('appointment').find({"Barbername": req.params.barbername}).toArray(function (err, results) {
-            if (err) res.send(err);
-            res.json(results);
-            db.close();
-        });
-    });
-});
-*/
 
+router.post('/newappointment', function(req, res, next) {
+    Appointment.create(req.body, function (err, post) {
+        if (err) return next(err);
+        res.json(post);
+    });
+});
 
 var User = require('../models/User.js');
-
-
-/**
-router.get('/userall', function (req, res, next) {
-        mongodb.MongoClient.connect('mongodb://bizbuzz:123456@ds025399.mlab.com:25399/bizbuzz', function (err, db) {
-        if (err) res.send(err);
-        db.collection('users').find().toArray(function (err, results) {
-                if (err) res.send(err);
-                res.json(results);
-                db.close();
-            });
-    });
-});
- */
 
 router.get('/user-all', function (req, res, next) {
     User.find(function (err, data) {
@@ -88,37 +44,11 @@ router.get('/user-all', function (req, res, next) {
     });
 });
 
-/*
-router.get('/user/:name', function (req, res, next) {
-    mongodb.MongoClient.connect('mongodb://bizbuzz:123456@ds025399.mlab.com:25399/bizbuzz', function (err, db) {
-        if (err) res.send(err);
-        db.collection('users').find({"name": req.params.name}).toArray(function (err, results) {
-            if (err) res.send(err);
-            res.json(results);
-            db.close();
-        });
-    });
-});
-*/
-
 router.get('/user/:name', function (req, res) {
     User.find({"name": req.params.name}, function(err, user) {
         if (err)
             res.send(err);
         res.json(user);
-    });
-});
-
-router.post('/user', function (req, res) {
-    var user = new User();
-    user.name = req.body.name;
-    user.Age = req.body.Age;
-    user.LoyaltyPoints = req.body.LoyaltyPoints;
-    user.FavoriteBarber = req.body.FavoriteBarber;
-    user.save(function(err) {
-        if (err)
-            res.send(err);
-        res.json({message : 'user created!'});
     });
 });
 
@@ -167,7 +97,7 @@ router.get('/shop/:username', function (req, res) {
     Shop.find({"username": req.params.username}, function(err, user) {
         if (err)
             res.send(err);
-        res.json(user);
+        res.send(user);
     });
 });
 

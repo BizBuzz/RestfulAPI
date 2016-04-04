@@ -7,7 +7,7 @@ var shopSchema = new mongoose.Schema({
     username: String,
     name: String,
     Address: String,
-    Badge: [{BName: String}]
+    Badge: [String]
 })
 
 module.exports = mongoose.model('shop', shopSchema);
