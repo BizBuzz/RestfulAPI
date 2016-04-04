@@ -7,4 +7,4 @@ var UserSchema = new mongoose.Schema({
     FavoriteBarber: String
 });
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', UserSchema);
