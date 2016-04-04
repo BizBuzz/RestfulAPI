@@ -76,8 +76,8 @@ router.get('/shop/:username', function (req, res) {
     });
 });
 
-router.post('/newappointment', function(req, res, next) {
-    User.create(req.body, function (err, post) {
+router.post('/newshop', function(req, res, next) {
+    Shop.create(req.body, function (err, post) {
         if (err) return next(err);
         res.json(post);
     });
