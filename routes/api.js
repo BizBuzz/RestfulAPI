@@ -67,37 +67,19 @@ router.get('/shop-all', function (req, res) {
         res.json(data);
     });
 });
-/*
-router.get('/shop-all', function (req, res, next) {
-    mongodb.MongoClient.connect('mongodb://bizbuzz:123456@ds025399.mlab.com:25399/bizbuzz', function (err, db) {
-        if (err) res.send(err);
-        db.collection('shop').find().toArray(function (err, results) {
-            if (err) res.send(err);
-            res.json(results);
-            db.close();
-        });
-    });
-});
-*/
-
-/*
-router.get('/shop/:username', function (req, res, next) {
-    mongodb.MongoClient.connect('mongodb://bizbuzz:123456@ds025399.mlab.com:25399/bizbuzz', function (err, db) {
-        if (err) res.send(err);
-        db.collection('shop').find({"username": req.params.username}).toArray(function (err, results) {
-            if (err) res.send(err);
-            res.json(results);
-            db.close();
-        });
-    });
-});
-*/
 
 router.get('/shop/:username', function (req, res) {
     Shop.find({"username": req.params.username}, function(err, user) {
         if (err)
             res.send(err);
-        res.send(user);
+        res.json(user);
+    });
+});
+
+router.post('/newappointment', function(req, res, next) {
+    User.create(req.body, function (err, post) {
+        if (err) return next(err);
+        res.json(post);
     });
 });
 
@@ -126,5 +108,4 @@ router.get('/user/:username/:password', function (req, res, next) {
 
 });
 */
-
 module.exports = router;
