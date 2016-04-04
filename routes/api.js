@@ -47,32 +47,45 @@ router.get('/appointment-barbername/:barbername', function (req, res, next) {
 
 var User = require('../models/User.js');
 
-router.get('/user-all', function (req, res, next) {
+
+/**
+router.get('/userall', function (req, res, next) {
         mongodb.MongoClient.connect('mongodb://bizbuzz:123456@ds025399.mlab.com:25399/bizbuzz', function (err, db) {
         if (err) res.send(err);
-        db.collection('user').find().toArray(function (err, results) {
+        db.collection('users').find().toArray(function (err, results) {
                 if (err) res.send(err);
                 res.json(results);
                 db.close();
             });
     });
 });
+ *//
 
-router.get('/userall', function (req, res, next) {
+router.get('/user-all', function (req, res, next) {
     User.find(function (err, data) {
         if (err) return next(err);
         res.json(data);
     });
 });
 
+/*
 router.get('/user/:name', function (req, res, next) {
     mongodb.MongoClient.connect('mongodb://bizbuzz:123456@ds025399.mlab.com:25399/bizbuzz', function (err, db) {
         if (err) res.send(err);
-        db.collection('user').find({"name": req.params.name}).toArray(function (err, results) {
+        db.collection('users').find({"name": req.params.name}).toArray(function (err, results) {
             if (err) res.send(err);
             res.json(results);
             db.close();
         });
+    });
+});
+*/
+
+router.get('/user/:name', function (req, res) {
+    User.find({"name": req.params.name}, function(err, user) {
+        if (err)
+            res.send(err);
+        res.json(user);
     });
 });
 
