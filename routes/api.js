@@ -59,7 +59,7 @@ router.get('/userall', function (req, res, next) {
             });
     });
 });
- *//
+ */
 
 router.get('/user-all', function (req, res, next) {
     User.find(function (err, data) {
