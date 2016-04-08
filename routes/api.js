@@ -35,6 +35,13 @@ router.post('/newappointment', function(req, res, next) {
     });
 });
 
+router.delete('/appointment/:id', function(req, res, next) {
+    Appointment.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+        if (err) return next(err);
+        res.json(post);
+    });
+});
+
 var User = require('../models/User.js');
 
 router.get('/user-all', function (req, res, next) {
@@ -56,6 +63,13 @@ router.post('/newuser', function(req, res, next) {
     User.create(req.body, function (err, post) {
         if (err) return next(err);
         res.json(post);
+    });
+});
+
+router.put('/user/:name', function(req, res, next) {
+    User.update({name: req.params.name}, req.body, function (err, numberAffected, rawResponse) {
+        if (err) return next(err);
+        res.json(rawResponse);
     });
 });
 
