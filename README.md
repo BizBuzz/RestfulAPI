@@ -7,6 +7,7 @@ http://bizzbuz-linxin-li.herokuapp.com/api/
 |GET|               /user-all|       List all userInfo|
 |GET|              /user/:name  |   List one userInfo|
 |POST|             /newuser      | Insert new userInfo|
+|PUT|             /user/:user     | Modify userInfo(add/change favorite barber)|
 |GET|              /shop-all     |  List all shopInfo|
 |GET|               /shop/:username  |   List one shopInfo|
 |POST|              /newshop          | Insert new shopInfo|
@@ -14,6 +15,7 @@ http://bizzbuz-linxin-li.herokuapp.com/api/
 |GET|               /appointment-username/:username| List one User's appointmentInfo|
 |GET|               /appointment-barbername/:barbername| List one barber's appointmentInfo|
 |POST|              /newappointment               |Insert new appointmentInfo|
+|DELETE|            /appointment/:id              |Delete appointmentInfo|
 
 ## List all userInfo
 - Example: get http://bizzbuz-linxin-li.herokuapp.com/api/user-all
@@ -92,7 +94,7 @@ http://bizzbuz-linxin-li.herokuapp.com/api/
   "FavoriteBarber": "Martin"
 }
 ```
-- Response
+- Response body
 ```
 {
   "__v": 0,
@@ -101,6 +103,26 @@ http://bizzbuz-linxin-li.herokuapp.com/api/
   "LoyaltyPoints": 100,
   "FavoriteBarber": "Martin",
   "_id": "5701cf220e29e91100856fde"
+}
+```
+
+## Modify userInfo(add/change favorite barber)
+
+- Example: put http://bizzbuz-linxin-li.herokuapp.com/api/user/Jimmy003
+- request body
+```
+{
+    "FavoriteBarber": "Martin002"
+}
+```
+- response body
+```
+{
+  "ok": 1,
+  "nModified": 1,
+  "n": 1,
+  "lastOp": "6271289792810450946",
+  "electionId": "56f4cc6ce7a8e6ce729b5eea"
 }
 ```
 
@@ -260,4 +282,14 @@ http://bizzbuz-linxin-li.herokuapp.com/api/
   "_id": "5701d22b0e29e91100856fdf"
 }
 ```
-
+## Delete appointmentInfo
+- Example: Delete http://bizzbuz-linxin-li.herokuapp.com/api/appointment/57081a91e4b050965a584547
+- response
+```
+{
+  "_id": "57081a91e4b050965a584547",
+  "Username": "Jimmy001",
+  "Barbername": "Clinton",
+  "Time": "2015-04-04T18:00:00.000Z"
+}
+```
