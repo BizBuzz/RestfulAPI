@@ -67,9 +67,9 @@ router.post('/newuser', function(req, res, next) {
 });
 
 router.put('/user/:name', function(req, res, next) {
-    User.update({name: req.params.name}, req.body, function (err, numberAffected, rawResponse) {
+    User.update({name: req.params.name}, req.body, function (err, put) {
         if (err) return next(err);
-        res.json(rawResponse);
+        res.json(put);
     });
 });
 
