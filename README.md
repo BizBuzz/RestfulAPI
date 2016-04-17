@@ -171,12 +171,13 @@ http://bizzbuz-linxin-li.herokuapp.com/api/
 
 ## Insert new shopInfo
 
-|Name|      Type             |
-|-----------|-------------------|
-| username|        String| 
-| name|         String  |  
-| Address|    String|      
-| Badge|   [String] | 
+|Name|      Type             |Name | Type|
+|-----------|----------------|-----|-----|
+| username|        String| |  |
+| name|         String  |  |  |
+| Address|    String|      |  |
+| Language|   Object |lang | string|
+|         |          |proficiency| string|
 
 - Example: post http://bizzbuz-linxin-li.herokuapp.com/api/newshop
 - request body 
