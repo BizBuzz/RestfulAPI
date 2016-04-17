@@ -7,7 +7,6 @@ var shopSchema = new mongoose.Schema({
     username: String,
     name: String,
     Address: String,
-    Badge: [String],
     Language: [{
         lang: String,
         proficiency: String
