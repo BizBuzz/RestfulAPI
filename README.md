@@ -132,38 +132,57 @@ http://bizzbuz-linxin-li.herokuapp.com/api/
 [
   {
     "_id": "56facc37e4b051a95b5c9dfb",
-    "username": "Clinton",
-    "name": "Clinton Street Barber Shop",
+    "username": "James001",
+    "name": "James Smith",
     "Address": "104 Clinton St Brooklyn, NY 11201",
-    "Badge": [
-      "Best Barbershop in Jan.",
-      "Most popular in Brooklyn"
+    "Language": [
+      {
+        "English": "Native Speaker",
+        "Spanish": "Limited Proficiency"
+      }
     ]
   },
   {
     "_id": "56faccdae4b051a95b5c9e00",
-    "username": "Blueprint",
-    "name": "Barbers Blueprint",
+    "username": "Robert00",
+    "name": "Robert Smith",
     "Address": "355 Atlantic Ave, Brooklyn, NY 11217",
-    "Badge": [
-      "Most popular in Brooklyn downtown"
+    "Language": [
+      {
+        "English": "Native Speaker"
+      }
+    ]
+  },
+  {
+    "_id": "5701d310940c3511003924e2",
+    "username": "Hao",
+    "name": "Hao Leung",
+    "Address": "51 Clark St New York, NY 11201",
+    "Language": [
+      {
+        "Cantonese": "Native Speaker",
+        "Mandarin": "Working proficiency",
+        "English": "Working proficiency"
+      }
     ]
   }
 ]
 ```
 
 ## List one shopInfo
-- Example: get http://bizzbuz-linxin-li.herokuapp.com/api/shop/Clinton
+- Example: get http://bizzbuz-linxin-li.herokuapp.com/api/shop/James001
 ```
 [
   {
     "_id": "56facc37e4b051a95b5c9dfb",
-    "username": "Clinton",
-    "name": "Clinton Street Barber Shop",
+    "username": "James001",
+    "name": "James Smith",
     "Address": "104 Clinton St Brooklyn, NY 11201",
-    "Badge": [
-      "Best Barbershop in Jan.",
-      "Most popular in Brooklyn"
+    "Language": [
+      {
+        "English": "Native Speaker",
+        "Spanish": "Limited Proficiency"
+      }
     ]
   }
 ]
@@ -183,11 +202,13 @@ http://bizzbuz-linxin-li.herokuapp.com/api/
 - request body 
 ```
   {
-    "username": "CuttingDen",
-    "name": "Cutting Den of Brooklyn Heights",
-    "Address": "51 Clark St New York, NY 11201",
-    "Badge": [
-      "Best Barbershop in Mar."
+    "username": "Jeff0002",
+    "name": "Jeff Smith",
+    "Address": "2111 71st, Brooklyn, NY 11204",
+    "Language": [
+      {
+        "English": "Working Proficiency"
+      }
     ]
   }
 ```
@@ -195,12 +216,14 @@ http://bizzbuz-linxin-li.herokuapp.com/api/
 ```
 {
   "__v": 0,
-  "username": "CuttingDen",
-  "name": "Cutting Den of Brooklyn Heights",
-  "Address": "51 Clark St New York, NY 11201",
-  "_id": "5701d310940c3511003924e2",
-  "Badge": [
-    "Best Barbershop in Mar."
+  "username": "Jeff0002",
+  "name": "Jeff Smith",
+  "Address": "2111 71st, Brooklyn, NY 11204",
+  "_id": "57144719fb1e8a1100c1174b",
+  "Language": [
+    {
+      "_id": "57144719fb1e8a1100c1174c"
+    }
   ]
 }
 ```
