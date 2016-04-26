@@ -109,13 +109,13 @@ http://bizzbuz-linxin-li.herokuapp.com/api/
 ## Modify userInfo(add/change favorite barber)
 
 - Example: put http://bizzbuz-linxin-li.herokuapp.com/api/user/Jimmy003
-- request body
+- Request body
 ```
 {
     "FavoriteBarber": "Martin002"
 }
 ```
-- response body
+- Response body
 ```
 {
   "ok": 1,
@@ -199,7 +199,7 @@ http://bizzbuz-linxin-li.herokuapp.com/api/
 |         |          |proficiency| string|
 
 - Example: post http://bizzbuz-linxin-li.herokuapp.com/api/newshop
-- request body 
+- Request body 
 ```
   {
     "username": "Jeff0002",
@@ -212,7 +212,7 @@ http://bizzbuz-linxin-li.herokuapp.com/api/
     ]
   }
 ```
-- response body
+- Response body
 ```
 {
   "__v": 0,
