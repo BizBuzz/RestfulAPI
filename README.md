@@ -296,7 +296,7 @@ http://bizzbuz-linxin-li.herokuapp.com/api/
     "Time": "04-04-2015 16:00:00"
   }
 ```
-- response 
+- Response body 
 ```
 {
   "__v": 0,
@@ -308,7 +308,7 @@ http://bizzbuz-linxin-li.herokuapp.com/api/
 ```
 ## Delete appointmentInfo
 - Example: Delete http://bizzbuz-linxin-li.herokuapp.com/api/appointment/57081a91e4b050965a584547
-- response
+- Response body
 ```
 {
   "_id": "57081a91e4b050965a584547",
